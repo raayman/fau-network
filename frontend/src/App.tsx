@@ -1,3 +1,4 @@
+// NOTE: when making new api calls use https://backend:PORT to make the calls since we are using docker during dev
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";

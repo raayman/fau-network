@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend # Path to backend Dockerfile
+    container_name: backend_container
+    ports:
+      - "8000:8000" # host:container
+    volumes:
+      - ./backend:/app # Sync code for live reload
+      - /app/node_modules # Don't overwrite node_modules
+    env_file:
+      - ./backend/.env # Load environment variables
+    command: npm run dev # Run nodemon for live reload
+    networks:
+      - app_network # Shared network between frontend/backend
+
+  frontend:
+    build: ./frontend # Path to frontend Dockerfile
+    container_name: frontend_container
+    ports:
+      - "5173:5173" # host:container
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    env_file:
+      - ./frontend/.env
+    command: npm run dev # Runs Vite dev server
+    depends_on:
+      - backend # Wait until backend starts
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
