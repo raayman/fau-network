@@ -1,6 +1,8 @@
 version: "3.9"
 
+# the type of set up we're running
 services:
+  # backend set up for the containers
   backend:
     build: ./backend # Path to backend Dockerfile
     container_name: backend_container
@@ -15,6 +17,7 @@ services:
     networks:
       - app_network # Shared network between frontend/backend
 
+  # frontend set up for the containers
   frontend:
     build: ./frontend # Path to frontend Dockerfile
     container_name: frontend_container
@@ -31,6 +34,7 @@ services:
     networks:
       - app_network
 
+# connect the frontend and the backend
 networks:
   app_network:
     driver: bridge
