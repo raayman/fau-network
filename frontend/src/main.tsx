@@ -10,6 +10,7 @@ import EventDetailPage from "./pages/EventDetail";
 import LoginPage from "./pages/Login";
 import SignUpPage from "./pages/SignUp";
 import ProfilePage from "./pages/Profile";
+import NotFoundPage from "./pages/NotFound";
 // TODO: use the useParam function to help with the routing to the eventId page to when elements are clicked on the route to different pages
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "profile", // this is for the profile page to edit the account information
         element: <ProfilePage />,
+      },
+      {
+        path: "*", // catch-all route for 404 pages
+        element: <NotFoundPage />,
       },
     ],
   },
