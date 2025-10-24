@@ -1,6 +1,6 @@
 export default function EventsPage() {
   return (
-    <div>
+    <div className="">
       <h2>Events</h2>
       <p>Here are all the events.</p>
     </div>
